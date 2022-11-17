@@ -21,4 +21,13 @@ describe('find client', () => {
         expect(ClientStore.all).toEqual([perso])
         expect(await clientGateway.listAll()).toEqual([{ id: 'abc123', name: 'Vincent', email: 'xxaxa@gmail.com'}])
     })
+    it('should find a client', async () => {
+        const perso : Client = { id: 'abc123', name: 'Vincent', email: 'xxaxa@gmail.com'}
+        const perso2 : Client = { id: 'abc514', name: 'Antoine', email: 'awwa@gmail.com'}
+        ClientStore.items = [perso,perso2]
+        clientGateway.feedWith(perso,perso2)
+        await getClient(clientGateway, { id: 'abc113', name: 'Vincent', email: 'xxaxa@gmail.com'})
+        expect(ClientStore.all).toEqual([])
+        expect(await clientGateway.listAll()).toEqual([])
+    })
 })
