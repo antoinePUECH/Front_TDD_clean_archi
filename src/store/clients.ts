@@ -21,7 +21,8 @@ export const useClientStore = defineStore('ClientStore', {
     },
     updateClient(client: Client) {
       const index = this.items.findIndex((item) => item.id === client.id)
-      this.items[index] = client
+      if(index !== -1)
+        this.items[index] = client
     },
     addClient(client: Client) {
       this.items.push(client)

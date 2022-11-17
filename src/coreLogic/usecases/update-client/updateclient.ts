@@ -4,6 +4,7 @@ import { Client } from '../client-listing/client'
 
 export const UpdateClient = async (clientGateway: ClientGateway, uclient:Client) => {
     const clients = useClientStore()
-    clients.updateClient(uclient)
     await clientGateway.updateClient(uclient)
+    clients.updateClient(uclient)
 }
+    

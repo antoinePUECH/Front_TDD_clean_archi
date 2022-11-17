@@ -19,5 +19,12 @@ describe('update client', () => {
         const update: Client = { id: 'abc123', name: 'Antoine', email: 'xaxa@gmail.com'}
         await UpdateClient(clientGateway,update)
         expect(ClientStore.all).toEqual([{ id: 'abc123', name: 'Antoine', email: 'xaxa@gmail.com'}])
+        expect(await clientGateway.listAll()).toEqual([{ id: 'abc123', name: 'Antoine', email: 'xaxa@gmail.com'}])
+    })
+    it('if not found, should not update a client', async () => {
+        const update: Client = { id: 'abc123', name: 'Antoine', email: 'xaxa@gmail.com'}
+        await UpdateClient(clientGateway,update)
+        expect(ClientStore.all).toEqual([])
+        expect(await clientGateway.listAll()).toEqual([])
     })
 })
