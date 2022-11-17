@@ -1,9 +1,11 @@
 import { ClientGateway} from "~/src/coreLogic/gateways/ClientGateway";
 import { Client } from "~/src/coreLogic/usecases/client-listing/client";
 
+
 export class InMemoryClientGateway implements ClientGateway {
   protected clients: Array<Client> = []
-
+  
+ 
   updateClient(client: Client): Promise<void> {
     const index = this.clients.findIndex((clients) => clients.id === client.id)
     if(index !== -1){
@@ -30,6 +32,10 @@ export class InMemoryClientGateway implements ClientGateway {
   delete(client: Client): Promise<void> {
     const index = this.clients.findIndex((clients) => clients.id === client.id)
     this.clients.splice(index, 1)
+    return Promise.resolve()
+  }
+  searchclient(client: Client): Promise<void> {
+    this.clients = this.clients.filter((item) => item.id === client.id)
     return Promise.resolve()
   }
 }

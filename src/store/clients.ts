@@ -5,7 +5,7 @@ export const useClientStore = defineStore('ClientStore', {
   state: () => {
     return {
       items: [] as Array<Client>,
-      isLoading: false
+      isLoading: false,
     }
   },
   getters: {
@@ -18,6 +18,9 @@ export const useClientStore = defineStore('ClientStore', {
     },
     startListing() {
       this.isLoading = true
+    },
+    getClient(client: Client) {
+      this.items = this.items.filter((item) => item.id === client.id)
     },
     updateClient(client: Client) {
       const index = this.items.findIndex((item) => item.id === client.id)
