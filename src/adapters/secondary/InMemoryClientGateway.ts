@@ -25,4 +25,9 @@ export class InMemoryClientGateway implements ClientGateway {
     this.clients.push(client)
     return Promise.resolve()
   }
+  delete(client: Client): Promise<void> {
+    const index = this.clients.findIndex((clients) => clients.id === client.id)
+    this.clients.splice(index, 1)
+    return Promise.resolve()
+  }
 }

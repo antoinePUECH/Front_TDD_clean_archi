@@ -26,6 +26,11 @@ export const useClientStore = defineStore('ClientStore', {
     },
     addClient(client: Client) {
       this.items.push(client)
+    },
+    deleteClient(client: Client) {
+      const index = this.items.findIndex((item) => item.id === client.id)
+      if (index > -1)
+        this.items.splice(index, 1)
     }
   }
 })
