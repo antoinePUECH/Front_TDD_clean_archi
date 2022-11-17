@@ -21,6 +21,16 @@ export class InMemoryClientGateway implements ClientGateway {
     return Promise.resolve(this.clients)
   }
   feedWith(...clients: Array<Client>) {
-    this.clients = clients
+    let availableClients: Array<Client> = []
+    clients.forEach(function (client) {
+      if (client.email.includes('@')) {
+        availableClients.push(client)
+      }
+    })
+    this.clients = availableClients
+  }
+  add(client: Client): Promise<void> {
+    this.clients.push(client)
+    return Promise.resolve()
   }
 }

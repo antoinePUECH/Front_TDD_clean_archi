@@ -15,14 +15,16 @@ describe('add client', () => {
   describe('The client email is not good', () => {
     it('should not add a client', async () => {
       const vincent: Client = {id: 'abc123', name: 'Vincent', email: 'plop'}
-      addClient(vincent)
+      clientGateway.feedWith(vincent)
+      await addClient(vincent, clientGateway)
       expect(clientStore.all).toEqual([])
     })
   })
   describe('The client email is good', () => {
-    it('should add a client',() => {
+    it('should add a client',async () => {
       const vincent: Client = {id: 'abc123', name: 'Vincent', email: 'vincent@good.com'}
-      addClient(vincent)
+      clientGateway.feedWith(vincent)
+      await addClient(vincent, clientGateway)
       expect(clientStore.all).toEqual([vincent])
     })
   })
