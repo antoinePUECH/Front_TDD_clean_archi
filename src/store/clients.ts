@@ -19,5 +19,8 @@ export const useClientStore = defineStore('ClientStore', {
     startListing() {
       this.isLoading = true
     },
+    addClient(client: Client) {
+      this.items.push(client)
+    }
   }
 })
