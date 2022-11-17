@@ -12,12 +12,17 @@ export const useClientStore = defineStore('ClientStore', {
     all: (state) => state.items
   },
   actions: {
-    list(products: Array<Client>) {
-      this.items = products
+    list(clients: Array<Client>) {
+      this.items = clients
       this.isLoading = false
     },
     startListing() {
       this.isLoading = true
     },
+    updateClient(client: Client) {
+      const index = this.items.findIndex((item) => item.id === client.id)
+      this.items[index] = client
+      this.isLoading = false
+    }
   }
 })

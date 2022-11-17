@@ -29,7 +29,7 @@ describe('list client', () => {
   })
   describe('Loading', () => {
     it('should be aware during loading', async () => {
-      const unsubscribe = clientStore.$subscribe((state: any) => {
+      const unsubscribe = clientStore.$subscribe((mutation: any,state: any) => {
         expect(state.isLoading).toBeTruthy()
         unsubscribe()
       })
