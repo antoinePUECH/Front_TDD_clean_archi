@@ -12,6 +12,7 @@ describe('update client', () => {
         clientGateway = new InMemoryClientGateway()
         ClientStore = useClientStore()
         ClientStore.items = [{id: 'abc123', name: 'Vincent', email: 'xaxa@gmail.com'}]
+        clientGateway.feedWith({id: 'abc123', name: 'Vincent', email: 'xaxa@gmail.com'})
     })
 
     it('should update a client / Store expect', async () => {

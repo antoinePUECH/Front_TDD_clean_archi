@@ -5,17 +5,9 @@ export class InMemoryClientGateway implements ClientGateway {
   protected clients: Array<Client> = []
 
   updateClient(client: any): Promise<Array<any>> {
-    this.clients = this.clients.map((c) => {
-      if (c.id === client.id) {
-        return client
-      }else{
-        return c
-      }
-
-      })
-    
+    const index = this.clients.findIndex((clients) => clients.id === client.id)
+    this.clients[index] = client
     return Promise.resolve(this.clients)
-    
   }
   listAll(): Promise<Array<Client>> {
     return Promise.resolve(this.clients)
