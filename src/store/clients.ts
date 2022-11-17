@@ -22,7 +22,6 @@ export const useClientStore = defineStore('ClientStore', {
     updateClient(client: Client) {
       const index = this.items.findIndex((item) => item.id === client.id)
       this.items[index] = client
-      this.isLoading = false
     },
     addClient(client: Client) {
       this.items.push(client)

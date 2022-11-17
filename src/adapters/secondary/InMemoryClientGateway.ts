@@ -4,10 +4,10 @@ import { Client } from "~/src/coreLogic/usecases/client-listing/client";
 export class InMemoryClientGateway implements ClientGateway {
   protected clients: Array<Client> = []
 
-  updateClient(client: any): Promise<Array<any>> {
+  updateClient(client: Client): Promise<void> {
     const index = this.clients.findIndex((clients) => clients.id === client.id)
     this.clients[index] = client
-    return Promise.resolve(this.clients)
+    return Promise.resolve()
   }
   listAll(): Promise<Array<Client>> {
     return Promise.resolve(this.clients)
