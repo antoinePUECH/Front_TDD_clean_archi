@@ -4,8 +4,8 @@ import {ClientGateway} from "~/src/coreLogic/gateways/ClientGateway";
 
 export const addClient = async (newClient: Client, clientGateway: ClientGateway) => {
   const clientStore = useClientStore()
-  await clientGateway.add(newClient)
   if (newClient.email.includes('@')) {
+    await clientGateway.add(newClient)
     clientStore.addClient(newClient)
   }
   return `Email ${newClient.email} is not valid`

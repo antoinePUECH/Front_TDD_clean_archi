@@ -18,14 +18,15 @@ describe('add client', () => {
       clientGateway.feedWith(vincent)
       await addClient(vincent, clientGateway)
       expect(clientStore.all).toEqual([])
+      expect(await clientGateway.listAll()).toEqual([])
     })
   })
   describe('The client email is good', () => {
     it('should add a client',async () => {
       const vincent: Client = {id: 'abc123', name: 'Vincent', email: 'vincent@good.com'}
-      clientGateway.feedWith(vincent)
       await addClient(vincent, clientGateway)
       expect(clientStore.all).toEqual([vincent])
+      expect(await clientGateway.listAll()).toEqual([vincent])
     })
   })
 })

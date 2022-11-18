@@ -16,8 +16,10 @@ describe('delete client', () => {
     it('should delete a client', async () => {
       const vincent: Client = {id: 'abc123', name: 'Vincent', email: 'plop@plop.com'}
       clientGateway.feedWith(vincent)
+      clientStore.addClient(vincent)
       await deleteClient(vincent, clientGateway)
       expect(clientStore.all).toEqual([])
+      expect(await clientGateway.listAll()).toEqual([])
     })
   })
   describe('The client is not deleted', () => {
@@ -28,6 +30,7 @@ describe('delete client', () => {
       clientStore.addClient(vincent)
       await deleteClient(wrongClient, clientGateway)
       expect(clientStore.all).toEqual([vincent])
+      expect(await clientGateway.listAll()).toEqual([vincent])
   })
 })
 })
