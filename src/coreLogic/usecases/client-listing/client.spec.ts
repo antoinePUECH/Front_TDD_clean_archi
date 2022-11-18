@@ -16,6 +16,7 @@ describe('list client', () => {
     it('should list nothing', async () => {
       await listClients(clientGateway)
       expect(clientStore.all).toEqual([])
+      expect(await clientGateway.listAll()).toEqual([])
     })
   })
   describe('There is available clients', () => {
@@ -25,6 +26,7 @@ describe('list client', () => {
       clientGateway.feedWith(vincent, antoine)
       await listClients(clientGateway)
       expect(clientStore.all).toEqual([vincent, antoine])
+      expect(await clientGateway.listAll()).toEqual([vincent, antoine])
     })
   })
   describe('Loading', () => {
