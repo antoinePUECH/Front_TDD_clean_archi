@@ -7,6 +7,7 @@ export class InMemoryDocumentGateway implements DocumentGateway {
   listAll(): Promise<Array<Document>> {
     return Promise.resolve(this.documents)
   }
+
   feedWith(...documents: Array<Document>) {
     this.documents = documents
   }
