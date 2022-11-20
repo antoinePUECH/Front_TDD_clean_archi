@@ -6,5 +6,13 @@ export const useDocumentStore = defineStore('DocumentStore', {
     return {
       items: [] as Array<Document>
     }
+  },
+  getters: {
+    all: (state) => state.items
+  },
+  actions: {
+    addDocument(document: Document) {
+      this.items.push(document)
+    }
   }
 })
