@@ -1,4 +1,4 @@
-import { ClientGateway} from "~/src/coreLogic/gateways/ClientGateway";
+import { ClientGateway } from "~/src/coreLogic/gateways/ClientGateway";
 import { Client } from "~/src/coreLogic/usecases/client-listing/client";
 
 
