@@ -4,6 +4,6 @@ import { useClientStore } from '~/src/store/clients'
 export const listClients = async (clientGateway: ClientGateway) => {
   const clientStore = useClientStore()
   clientStore.startListing()
-  const products = await clientGateway.listAll()
-  clientStore.list(products)
+  const clients = await clientGateway.listAll()
+  clientStore.list(clients)
 }
