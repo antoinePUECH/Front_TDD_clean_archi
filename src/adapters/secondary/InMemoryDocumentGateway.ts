@@ -18,6 +18,9 @@ export class InMemoryDocumentGateway implements DocumentGateway {
   }
 
   delete(document: Document): Promise<void> {
-    return Promise.resolve(undefined);
+    const index = this.documents.findIndex((item) => item.id === document.id)
+    if (index > -1)
+      this.documents.splice(index, 1)
+    return Promise.resolve(undefined)
   }
 }
