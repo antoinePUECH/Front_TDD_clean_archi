@@ -13,14 +13,11 @@ export class InMemoryDocumentGateway implements DocumentGateway {
   }
 
   add(document: Document): Promise<void> {
-    return Promise.resolve(undefined);
+    this.documents.push(document)
+    return Promise.resolve();
   }
 
   delete(document: Document): Promise<void> {
-    return Promise.resolve(undefined);
-  }
-
-  filter(document: Document): Promise<void> {
     return Promise.resolve(undefined);
   }
 }

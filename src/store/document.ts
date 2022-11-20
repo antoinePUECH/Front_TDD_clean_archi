@@ -19,5 +19,13 @@ export const useDocumentStore = defineStore('DocumentStore', {
     startListing() {
       this.isLoading = true
     }
+  },
+  getters: {
+    all: (state) => state.items
+  },
+  actions: {
+    addDocument(document: Document) {
+      this.items.push(document)
+    }
   }
 })
